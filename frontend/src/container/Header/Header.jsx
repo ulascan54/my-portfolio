@@ -34,7 +34,7 @@ const Header = () => {
                 Full-Stack Developer
               </p>
               <p className='p-text'>
-                Student
+                CS - Student
               </p>
           </div>
         </div>

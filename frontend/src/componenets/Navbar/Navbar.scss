@@ -20,6 +20,18 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    span{
+        font-style: normal;
+        font-weight: 300;
+        font-size: 23px;
+        line-height: 40px;
+        letter-spacing: 0.06em;
+        b{
+            font-family:'Courier New', Courier, monospace;
+            color: var(--secondary-color);
+        }
+        }
     img{
         width:90px;
         height: 20px;
