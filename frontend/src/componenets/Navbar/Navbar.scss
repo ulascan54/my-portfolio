@@ -1,15 +1,19 @@
 .app__navbar{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
     background-color: rgba(255,255,255,0.25);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255,255,255,0.18);
     position: fixed;
     z-index: 2;
+}
+.app__navbar-container{
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin: 0 auto;
 }
 
 .app__navbar-logo{
@@ -29,7 +33,7 @@
 .app__navbar-links{
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     list-style: none;
 
@@ -44,7 +48,7 @@
             scale:0;
             transition: all 0.3s ease-in-out;
         }
-
+ 
         div{
             position: relative;
             width: 100%;
