@@ -115,18 +115,11 @@ const Work = () => {
           </div>
         ))}
       </motion.div>
-      <motion.div
-                    whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.90] }}
-                    transition={{ duration: 0.25 }}
-                    className="app__flex"
-                  >
       <div className="app__work-filter">
                 {collection.length>0 && filterWork.length>collection.length ? (
                     <div className=' app__work-filter-item app__flex p-text' onClick={() => setEnd(end+count)}>Load More</div>
                 ) : null }
-            </div>
-      </motion.div>
+      </div>
     </>
   );
 };
