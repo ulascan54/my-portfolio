@@ -15,7 +15,7 @@ const SocialMedia = () => {
                 <BsTwitter/>
             </div>
         </a>
-        <a target="_blank" href="https://twitter.com/ulascand54" >
+        <a target="_blank" href="https://www.instagram.com/canulas.54/" >
             <div>
                 <BsInstagram/>
             </div>
