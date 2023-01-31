@@ -99,6 +99,10 @@
 }
 
 .app__social {
+    z-index: 99;
+    bottom: 1rem;
+    left: 1rem;
+    position: fixed;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -149,6 +153,10 @@
 }
 
 .app__navigation {
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;

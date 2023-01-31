@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {AiOutlineCloudDownload} from 'react-icons/ai'
 import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { client } from '../../client';
@@ -17,7 +17,8 @@ const Footer = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     setLoading(true);
 
     const contact = {
@@ -34,6 +35,9 @@ const Footer = () => {
       })
       .catch((err) => console.log(err));
   };
+  const resetForm = () => {
+    setFormData({ name: '', email: '', message: '' })
+  };
 
   return (
     <>
@@ -44,21 +48,27 @@ const Footer = () => {
           <img src={images.email} alt="email" />
           <a href="mailto:ulascandemirbag@gmail.com" className="p-text">ulascandemirbag@gmail.com</a>
         </div>
+        <div className="app__footer-card ">
+          <img src={images.email} alt="email" />
+          <a href="mailto:ulascan.demirbag@std.yeditepe.edu.tr" className="p-text">ulascan.demirbag@std.yeditepe.edu.tr</a>
+        </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="phone" />
           <a href="tel:0530 897 54 86" className="p-text">+90 530 897 54 86</a>
         </div>
+
       </div>
       {!isFormSubmitted ? (
-        <div className="app__footer-form app__flex">
+          <form onSubmit={handleSubmit} className="app__footer-form app__flex">
           <div className="app__flex">
-            <input className="p-text" type="text" placeholder="Your Name" name="username" value={username} onChange={handleChangeInput} />
+            <input className="p-text" type="text" placeholder="Your Name" required name="username" value={username} onChange={handleChangeInput} />
           </div>
           <div className="app__flex">
-            <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput} />
+            <input className="p-text" type="email" placeholder="Your Email" required name="email" value={email} onChange={handleChangeInput} />
           </div>
           <div>
             <textarea
+              required
               className="p-text"
               placeholder="Your Message"
               value={message}
@@ -66,8 +76,12 @@ const Footer = () => {
               onChange={handleChangeInput}
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
-        </div>
+          <div className='app__buttons'>
+          <button  className="p-text">{!loading ? 'Send Message' : 'Sending...'}</button>
+          <button  className="p-text" onClick={resetForm}>Reset</button>
+          </div>
+          </form>
+          
       ) : (
         <div>
           <h3 className="head-text">
@@ -75,6 +89,21 @@ const Footer = () => {
           </h3>
         </div>
       )}
+              <div className="app__footer-card app__footer-card-qr">
+
+          <a href="https://docs.google.com/document/d/1r62aYrw97PJeEkf4dEX8EDMdIOUXC8rn3wVODRUbltc" target="_blank">
+            <AiOutlineCloudDownload size={22}/><span> Download My Resume</span></a>
+        </div>
+        <div className="app__footer-card app__footer-card-qr">
+          <div>
+          <img src={images.qr} alt="qr-code" />
+          <p>SCAN ME !</p>
+          </div>
+        </div>
+        <div className="copyright">
+          <p className="p-text">@2023 ULAS CAN</p>
+          <p className="p-text">All rights reserved</p>
+        </div>
     </>
   );
 };

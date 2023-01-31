@@ -191,3 +191,46 @@
         display: none;
     }
 }
+
+
+.app__social-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1rem;
+    gap: 10px;
+    width: 300px;
+
+    article {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: var(--white-color);
+        margin: 0.25rem 0;
+        outline: 1px solid var(--gray-color);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        svg {
+            width: 30px;
+            height: 30px;
+            color: var(--gray-color);
+        }
+
+        &:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+
+            svg {
+                color: var(--white-color);
+            }
+        }
+
+    }
+}
