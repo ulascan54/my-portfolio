@@ -8,19 +8,28 @@ import './Work.scss';
 
 const Work = () => {
   const [works, setWorks] = useState([]);
+  const [wtitle, setWtitle] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
+  const [filterWtitle, setFilterWtitle] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [end,setEnd] = useState(5)
   const [count] = useState(5)
   const [collection,setCollection] = useState([])
+  const [collection2,setCollection2] = useState([])
 
   useEffect(() => {
     const query = '*[_type == "works"]';
+    const query2 = '*[_type == "wtitle"]';
 
     client.fetch(query).then((data) => {
       setWorks(data);
       setFilterWork(data);
+    });
+
+    client.fetch(query2).then((data) => {
+      setWtitle(data);
+      setFilterWtitle(data);
     });
   }, []);
 
@@ -47,18 +56,28 @@ const Work = () => {
     setCollection(getCollection())
   },[filterWork, end])
 
+  const end2=99
+
+  const getCollection2 = () => {
+    return filterWtitle.slice(0,end2)
+  }
+  
+  useEffect(() => {
+    setCollection2(getCollection2())
+  },[filterWtitle, end2])
+
   return (
     <>
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
       <div className="app__work-filter">
-        {['All','HTML-CSS', 'Bootstrap-Tailwind' , 'JavaScript', 'Vue JS', 'React JS', 'Web3-Blockchain', 'Full-Stack', 'Real-Time', 'Mobile'].map((item, index) => (
+        {collection2.map((wtitle, index) => (
           <div
             key={index}
-            onClick={() => handleWorkFilter(item)}
-            className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
+            onClick={() => handleWorkFilter(wtitle.name)}
+            className={`app__work-filter-item app__flex p-text ${activeFilter === wtitle.name ? 'item-active' : ''}`}
           >
-            {item}
+            {wtitle.name}
           </div>
         ))}
       </div>

@@ -8,25 +8,28 @@ import './Certificates.scss';
 
 const Certificate = () => {
   const [certificates, setCertificates] = useState([]);
-  const [filterCertificate, setFilterCertificate] = useState([]);
-  const [ctitle, setCtitle] = useState([]);
+  const [ctitle,setCtitle] = useState([]);
   const [filterCtitle, setFilterCtitle] = useState([]);
+  const [filterCertificate, setFilterCertificate] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [end,setEnd] = useState(4)
   const [count] = useState(4)
   const [collection,setCollection] = useState([])
+  const [collection2,setCollection2] = useState([])
 
   useEffect(() => {
     const query = '*[_type == "certificates"]';
     const query2 = '*[_type == "ctitle"]';
-    client.fetch(query).then((data) => {
-      setCertificates(data);
-      setFilterCertificate(data);
-    });
+
     client.fetch(query2).then((data) => {
       setCtitle(data);
       setFilterCtitle(data);
+    });
+
+    client.fetch(query).then((data) => {
+      setCertificates(data);
+      setFilterCertificate(data);
     });
   }, []);
 
@@ -52,18 +55,27 @@ const Certificate = () => {
   useEffect(() => {
     setCollection(getCollection())
   },[filterCertificate, end])
+
+  const getCollection2 = () => {
+    return filterCtitle.slice(0,end2)
+  }
+  const end2=99
+  useEffect(() => {
+    setCollection2(getCollection2())
+  },[filterCtitle,end2])
+
   return (
     <>
       <h2 className="head-text">My  <span>Certificates</span></h2>
 
       <div className="app__certificate-filter">
-        {['All','Google','FreeCodeCamp','Hackerrank','Datacamp','Patika.dev','Bilge Adam'].map((item, index) => (
+        {collection2.map((ctitle, index) => (
           <div
             key={index}
-            onClick={() => handleCertificateFilter(item)}
-            className={`app__certificate-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
+            onClick={() => handleCertificateFilter(ctitle.name)}
+            className={`app__certificate-filter-item app__flex p-text ${activeFilter === ctitle.name ? 'item-active' : ''}`}
           >
-            {item}
+            {ctitle.name}
           </div>
         ))}
       </div>
