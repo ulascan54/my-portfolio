@@ -24,7 +24,7 @@ const Navbar = () => {
           {/* <img src={images.logo} alt="logo" /> */}
         </div>
           <ul className='app__navbar-links'>
-            {['home','about','work','skills', 'certificate' ,'contact'].map((item)=>(
+            {['home','about','work','skills', 'certificates' ,'contact'].map((item)=>(
               <li className='app__flex p-tex'  key={`link-${item}`}>
                 <a href={`#${item}`}><span>{'<'} </span>{item}<span> {'/ >'}</span></a>
                 <div />
@@ -49,7 +49,7 @@ const Navbar = () => {
                 <HiX onClick={(e) => handleOnClick(e)} />
                 </motion.span>
                     <ul>
-                    {['home','about','work','skills','certificate' ,'contact'].map((item)=>(
+                    {['home','about','work','skills','certificates' ,'contact'].map((item)=>(
                       <li key={item}>
                         <a href={`#${item}`} onClick={() => setToggle(false)}><span>{'<'} </span>{item}<span> {'/ >'}</span></a>
                       </li>
@@ -77,7 +77,7 @@ const Navbar = () => {
                                 <BsLinkedin/>
                             </article>
                           </a>
-                          <a target="_blank" href="hhttps://www.youtube.com/@this.ulascan" >
+                          <a target="_blank" href="https://www.youtube.com/channel/UCM2XZrxPnMLSOcsLX15JQzw" >
                             <article>
                                 <BsYoutube/>
                             </article>

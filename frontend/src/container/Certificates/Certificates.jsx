@@ -9,6 +9,8 @@ import './Certificates.scss';
 const Certificate = () => {
   const [certificates, setCertificates] = useState([]);
   const [filterCertificate, setFilterCertificate] = useState([]);
+  const [ctitle, setCtitle] = useState([]);
+  const [filterCtitle, setFilterCtitle] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [end,setEnd] = useState(4)
@@ -17,10 +19,14 @@ const Certificate = () => {
 
   useEffect(() => {
     const query = '*[_type == "certificates"]';
-
+    const query2 = '*[_type == "ctitle"]';
     client.fetch(query).then((data) => {
       setCertificates(data);
       setFilterCertificate(data);
+    });
+    client.fetch(query2).then((data) => {
+      setCtitle(data);
+      setFilterCtitle(data);
     });
   }, []);
 
@@ -46,7 +52,6 @@ const Certificate = () => {
   useEffect(() => {
     setCollection(getCollection())
   },[filterCertificate, end])
-
   return (
     <>
       <h2 className="head-text">My  <span>Certificates</span></h2>
@@ -119,6 +124,6 @@ const Certificate = () => {
 
 export default AppWrap(
   MotionWrap(Certificate, 'app__certificates'),
-  'certificate',
+  'certificates',
   'app__primarybg',
 );

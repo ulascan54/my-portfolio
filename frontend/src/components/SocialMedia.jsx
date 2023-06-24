@@ -25,7 +25,7 @@ const SocialMedia = () => {
                 <BsLinkedin/>
             </div>
         </a>
-        <a target="_blank" href="hhttps://www.youtube.com/@this.ulascan" >
+        <a target="_blank" href="https://www.youtube.com/channel/UCM2XZrxPnMLSOcsLX15JQzw" >
             <div>
                 <BsYoutube/>
             </div>

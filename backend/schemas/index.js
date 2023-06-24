@@ -1,4 +1,6 @@
 import testimonials from './testimonials'
+import wtitle from './wtitle'
+import ctitle from './ctitle'
 import works from './works'
 import brands from './brands'
 import abouts from './abouts'
@@ -9,5 +11,5 @@ import contact from './contact'
 import certificates from './certificates'
 
 export const schemaTypes = ([
-    works, testimonials, brands, abouts, skills, workExperience, experiences, contact, certificates
+    works,wtitle, testimonials, brands, abouts, skills, workExperience, experiences, contact, certificates,ctitle
 ])
